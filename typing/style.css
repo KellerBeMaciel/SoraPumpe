@@ -1,0 +1,36 @@
+body {
+    color: #C8BBC8;
+    background-color: #4B365A;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+header{
+    text-align: center;
+    background-color: #2C2133;
+    padding: 30px;
+}
+.lead{
+    text-align: center;
+    font-weight: 600;
+    margin-top: 20px;
+}
+h2{
+    text-align: center;
+    padding: 0 0 20px 0;
+}
+.instrucciones{
+    height: 30px;
+    text-align: center;
+}
+h3{
+    text-align: center;
+    float: initial;
+}
+#message{
+    color: red;
+    text-align: center;
+    font-size: 50px;
+    font-weight: 700;
+    padding: 20px;
+    height: 120px;
+}

@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <title>Bien Venida</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+<body> 
+	<main>
+  	<h1>いらっしゃいませ Sora!
+		Finalmente a data chegou,
+		podemos começar?</h1>
+
+		<div class="continue">
+			<a href="../typing/index.html"> <button class="custom-btn botao"><span> 受け入れる </span></button> </a>
+		</div>
+
+	</main>
+
+	<script>
+	  	function typeWriter(e) {
+		   const textoArray = e.innerHTML.split('')
+		   e.innerHTML = ''
+		   textoArray.forEach((letra, i) => {
+		          setTimeout(() => e.innerHTML += letra, 75 * i)});
+		}
+		const texto = document.querySelector('h1')
+		typeWriter(texto)
+	</script>
+
+</body>
+</html>
