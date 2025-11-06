@@ -1,0 +1,220 @@
+body {
+	background-color: #4B365A;
+	font-family: 'Courier New', Courier, monospace;
+}
+
+header{
+	color: #C8BBC8;
+    text-align: center;
+    background-color: #2C2133;
+    padding: 20px;
+}
+
+img {
+	width: 100%;
+	height: 100%;
+}
+
+.card_container {
+  position: relative;
+  margin: 1px auto;
+  padding: 3px;
+  width: 138px;
+  height: 175px;
+  line-height: 12em;
+  z-index: 1;
+}
+
+.card_container {
+  -moz-perspective: 1000;
+  -webkit-perspective: 1000;
+  perspective: 1000;
+}
+
+.card {
+  background: repeating-radial-gradient(circle at 0 50%, #9C709C, #704170, #9C709C 6%), 
+			radial-gradient(circle at 0 50%, #704170, #9C709C);
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  box-shadow: 0.5px 2.5px #D098D0;
+
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden; 
+
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+
+  transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  
+  transition: all .25s linear;
+  -moz-transition: all .25s linear;
+  -webkit-transition: all .25s linear;
+
+  &::before, &::after {
+		position: absolute;
+		inset: 0;
+		z-index: 0;
+		content: ''
+  }
+}
+
+.flip .card{
+  -moz-transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+
+.face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; 
+  backface-visibility: hidden; 
+}
+
+.face.back {
+  display: block;
+  color: #7B517B;
+  font-size: 7.5em;
+  background-color: #D098D0;
+  border-radius: 8px;
+  -moz-transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+table {
+	margin: 0px auto;
+}
+
+.timer {
+  display: block;
+  margin: 10px auto;
+  position: relative;
+  width: 150px;
+  height: 50px;
+  line-height: 50px;
+  background-color: #FFE0FF;
+  border-radius: 25px;
+  border: 2px solid #2C2133;
+  font-size: 40px;
+  text-align: center;
+  color: #766186;
+}
+
+.critical {
+  color: red;
+}
+
+.cntr {
+  margin: 15px auto;
+}
+
+.points {
+  position: absolute;
+}
+
+
+
+/* Botão */
+
+#fin-btn{
+	display: none;
+}
+
+.continue{
+  margin: auto;
+  padding-top: 2em;
+  width: 40%;
+}
+
+.custom-btn {
+  width: 100%;
+  height: 40px;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px 25px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
+  outline: none;
+}
+
+.botao {
+  background-color: #A36EA3;
+  line-height: 42px;
+  padding: 0;
+  border: none;
+}
+.botao span {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.botao:before,
+.botao:after {
+  position: absolute;
+  content: "";
+  right: 0;
+  bottom: 0;
+  background: #c797eb;
+  transition: all 0.3s ease;
+}
+.botao:before{
+   height: 0%;
+   width: 2px;
+}
+.botao:after {
+  width: 0%;
+  height: 2px;
+}
+.botao:hover:before {
+  height: 100%;
+}
+.botao:hover:after {
+  width: 100%;
+}
+.botao:hover{
+  background: transparent;
+}
+.botao span:hover{
+  color: #c797eb;
+}
+.botao span:before,
+.botao span:after {
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 0;
+  background: #c797eb;
+  transition: all 0.3s ease;
+}
+.botao span:before {
+  width: 2px;
+  height: 0%;
+}
+.botao span:after {
+  height: 2px;
+  width: 0%;
+}
+.botao span:hover:before {
+  height: 100%;
+}
+.botao span:hover:after {
+  width: 100%;
+}

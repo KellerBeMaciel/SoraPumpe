@@ -1,22 +1,15 @@
 window.addEventListener('load', init);
 
 // Global Variables
+const currentLevel = 2;
+const goalIndex = 10;
 
-let time = 5;
+let time = currentLevel;
 let score = 0;
+let wordIndex = 0;
+let isFail = false;
+let isFinished = false;
 let isPlaying;
-
-// Levels
-
-const levels = {
-    easy : 5,
-    medium : 3,
-    hard : 2
-}
-
-// Change Levels
-
-const currentLevel = levels.medium;
 
 // DOM Elements
 
@@ -26,58 +19,20 @@ const scoreDisplay = document.getElementById('score');
 const timeDisplay = document.getElementById('time');
 const messageDisplay = document.getElementById('message');
 const seconds = document.getElementById('seconds');
+const btnContinuar = document.getElementById('fin-btn');
 
 const words = [
-'land',
-'Javascript',
-'sneeze',
-'battle',
-'plan',
-'tongue',
-'shocking',
-'kitty',
-'sisters',
-'Batman',
-'oceanic',
-'school',
-'cent',
-'oranges',
-'tense',
-'sail',
-'war',
-'dam',
-'poor',
-'trace',
-'jellyfish',
-'parsimonious',
-'jittery',
-'alert',
-'pest',
-'thing',
-'berserk',
-'glossy',
-'houses',
-'man',
-'charming',
-'pale',
-'glass',
-'reflect',
-'dusty',
-'attach',
-'auspicious',
-'illustrious',
-'drum',
-'insidious',
-'correct',
-'bury',
-'repulsive',
-'handsomely',
-'snore',
-'power',
-'exercise',
-'flap',
-'materialistic',
-'repair'
+'bien',
+'venida',
+'estamos',
+'aqui',
+'para',
+'comemorar',
+'su',
+'cumpleanos',
+'te',
+'amamos',
+'muito',
 ];
 
 // Initialize Game
@@ -97,25 +52,30 @@ function init(){
 // Start Match
 
 function startMatch(){
+
     if(matchWords()){
         isPlaying = true;
-        time = currentLevel +1;
+        time = currentLevel + 1;
         showWord(words);
         wordInput.value = '';
         score++;
     }
-    // if score is -1, display 0
+
     if(score === -1){
         scoreDisplay.innerHTML = 0;
     } else{
-    scoreDisplay.innerHTML = score;
+        scoreDisplay.innerHTML = score;
+    }
 }
-}
-
-// Match Current word to the input
 
 function matchWords(){
     if(wordInput.value === currentWord.innerHTML){
+        if(wordIndex < goalIndex){
+            wordIndex++;
+        } else {
+            isFinished = true;
+        }
+
         messageDisplay.innerHTML = 'Correct!!!';
         messageDisplay.style.color = 'green';
         return true;
@@ -125,23 +85,22 @@ function matchWords(){
     }
 }
 
-
-
-// Pick a random word 
-
 function showWord(words){
-    // Generate Random Word From Array
-    const randIndex = Math.floor(Math.random() * words.length);
-    // Show that word 
-    currentWord.innerHTML = words[randIndex];
+    if(isFail) {
+        wordIndex = 0;
+        isFail = false;
+    }
 
+    if(!isFinished) {
+        const index = wordIndex;
+        currentWord.innerHTML = words[index];
+    } else {
+        btnContinuar.style.display = 'block';
+    }
 }
-// Countdown timer
 
 function countdown(){
-    // Make sure time hasn't run out
     if(time > 0){
-        // Decrement
         time--;
     }
     else if(time === 0){
@@ -149,12 +108,14 @@ function countdown(){
     }
     timeDisplay.innerHTML = time;
 }
-// check status
 
 function checkStatus(){
-    if(!isPlaying && time===0){
-        messageDisplay.innerHTML = 'Game Over !!!';
-        score = 0;
-        messageDisplay.style.color = 'red';
+    if(!isFinished){
+        if(!isPlaying && time===0){
+            score = 0;
+            isFail = true;
+            messageDisplay.innerHTML = 'Game Over !!!';
+            messageDisplay.style.color = 'red';
+        }
     }
 }
