@@ -1,3 +1,5 @@
+const resposta = 'PORRA';
+
 Wordle = new function(){
   var $this = this;
   this.version = '1.0';
@@ -165,7 +167,7 @@ Wordle = new function(){
     this.check = function( word ){
       var exists = this.words.indexOf( word ) > -1;
       if ( !exists ) {
-        Wordle.UI.growl('Not in word list');
+        Wordle.UI.growl('Esa palabra no existe!');
         return false;
       }
       return true;
@@ -377,21 +379,21 @@ Wordle = new function(){
       this.setDOMHints( this.row, hints.correct, hints.present, hints.absent );
       if ( this.answer == attemptWord ) {
         switch( this.row + 1 ) {
-          case 1 : var tries = 'one try!'; break;
-          case 2 : var tries = 'two tries!'; break;
-          case 3 : var tries = 'three tries!'; break;
-          case 4 : var tries = 'four tries.'; break;
-          case 5 : var tries = 'five tries.'; break;
-          case 6 : var tries = 'six tries.'; break;
-          case 7 : var tries = 'seven tries.'; break;
-          case 8 : var tries = 'eight tries.'; break;
-          case 9 : var tries = 'nine tries.'; break;
-          case 10 : var tries = 'ten tries.'; break;
+          case 1 : var tries = 'una tentativa!'; break;
+          case 2 : var tries = '2 tentativas!'; break;
+          case 3 : var tries = '3 tentativas!'; break;
+          case 4 : var tries = '4 tentativas.'; break;
+          case 5 : var tries = '5 tentativas.'; break;
+          case 6 : var tries = '6 tentativas.'; break;
+          case 7 : var tries = '7 tentativas.'; break;
+          case 8 : var tries = '8 tentativas.'; break;
+          case 9 : var tries = '9 tentativas.'; break;
+          case 10 : var tries = '10 tentativas.'; break;
         }
         this.won = true;
         this.gameOver = true;
         options.onUpdate.call(this, event());
-        Wordle.UI.growl('You won in '+tries);
+        Wordle.UI.growl('Eso!!! AWEBO!! lograste en '+tries);
         return options.onWin.call(this, event());
       }
       if ( this.row != options.rows-1 ) this.nextRow();
@@ -400,7 +402,7 @@ Wordle = new function(){
         this.gameOver = true;
         options.onUpdate.call(this, event());
         options.onLost.call(this, event());
-        return Wordle.UI.growl('You lost :(');
+        return Wordle.UI.growl('Nooo! Erraste... pero, no pasa nah! Intenta de nuevo! F5');
       }
       options.onUpdate.call(this, event());
     }
@@ -420,7 +422,8 @@ Wordle = new function(){
           var index = day + daily - 1;
           if ( typeof this.dictionary.words[index] !== 'string' )
             return this.setAnswer( Wordle.AnswerType.RANDOM );
-          this.answer = this.dictionary.words[ index ];
+            //this.answer = this.dictionary.words[ index ];
+          this.answer = resposta;
           break;
         case Wordle.AnswerType.DEFINED :
           this.answer = answer.toUpperCase();
@@ -457,38 +460,6 @@ Wordle = new function(){
       }
       $this.DOM = $game;
     }
-    var buildStyle = function(){
-      var styles = [
-        '.wordle-game-row { text-align: center; white-space: nowrap; }',
-        '.wordle-game-spot { padding: 15px 10px 10px 10px; border: 2px solid #3a3a3c; margin: 2px; display: inline-block; '+
-          'width: 24px; height: 24px; font-size: 30px; line-height: 24px; font-weight: bold; text-align: center; }',
-        '.wordle-game-spot:before { content: "\\a0"; } .wordle-game-spot[title]:before { content: attr(title); }',
-        '.wordle-game-row-active .wordle-game-spot { border-color: #666; } .wordle-keyboard { text-align: center; }',
-        '.wordle-keyboard span { padding: 10px 9px 6px 9px; border-radius: 5px; display: inline-block; margin: 1px; '+
-          'cursor: pointer; background-color: #818384; min-width: 12px; user-select: none; transition: color 1s, border-color 1s; }',
-        '.wordle-keyboard span[title="DELETE"] { color: transparent; background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d'+
-          '3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjI0Ij48cGF0aCBmaWxsPSJ3aGl0ZSIgZD0iTTI'+
-          'yIDNIN2MtLjY5IDAtMS4yMy4zNS0xLjU5Ljg4TDAgMTJsNS40MSA4LjExYy4zNi41My45Ljg5IDEuNTkuODloMTVjMS4xIDAgMi0uOSAyLTJWNWMwLTEuM'+
-          'S0uOS0yLTItMnptMCAxNkg3LjA3TDIuNCAxMmw0LjY2LTdIMjJ2MTR6bS0xMS41OS0yTDE0IDEzLjQxIDE3LjU5IDE3IDE5IDE1'+
-          'LjU5IDE1LjQxIDEyIDE5IDguNDEgMTcuNTkgNyAxNCAxMC41OSAxMC40MSA3IDkgOC40MSAxMi41OSAxMiA5IDE1LjU5eiI+PC9wYXRoPjwvc3ZnPg==") '+
-          'scroll no-repeat center center #818384; }',
-        '@keyframes wordleGrowl { 0% { opacity: 0; margin-top: 20px; } 20% { opacity: 1; margin-top: 0px; } '+
-          '80% { opacity: 1; margin-top: 0px; } 100% { opacity: 0; margin-top: -20px; } }',
-        '.wordle-ui-growl { width: 100%; top: 40%; position: fixed; text-align: center; opacity: 0; animation: 2.8s forwards wordleGrowl; }',
-        '.wordle-ui-growl-inner { display: inline-block; background-color: white; border-radius: 7px; color: black; padding: 12px 24px; }',
-        '.wordle-game-absent { background-color: #3a3a3c !important; border-color: #3a3a3c !important; color: #666; }',
-        '.wordle-game-present { background-color: #b59f3b !important; border-color: #b59f3b !important; color: white; }',
-        '.wordle-game-correct { background-color: #538d4e !important; border-color: #538d4e !important; color: white; }',
-        '@media (max-height: 512px) { .wordle-game-row .wordle-game-spot { height: 1px; font-size: 16px; line-height: 1px; } '+
-          '.wordle-game-row.wordle-game-row-active .wordle-game-spot { height: 24px; font-size: 30px; line-height: 24px; }}'
-      ];
-      for( var i = 0; i < options.columns; i++ )
-        styles.push('.wordle-game-spot:nth-child('+(i+1)+') { transition: all 0.5s '+(0.2 * i)+'s; }');
-      var $style = document.createElement('style');
-      $style.innerHTML = styles.join("\n");
-      $this.STYLE = $style;
-    }
-    buildStyle();
     buildDOM();
   }
   
@@ -569,21 +540,13 @@ Wordle = new function(){
   
 } // Wordle
 
-// Statistics from Cookies
-
-
 // Wordle Game Instance
 var game = new Wordle.Game({
   onWin: function(){
-    showStatistics( 3000 );
-  },
-  onUpdate: function(e) {
-    statistics.updateStats( 'day' + day, e );
-    statistics.DOM.update( day );
+    document.getElementById('keyboard').style.display = 'none';
+    document.getElementById('fin-btn').style.display = 'block';
   },
   onResumed: function(){
-    hideInstructions()
-    statistics.DOM.update( day );
     var current = statistics.get('day' + day, null);
     if ( current && current.gameOver ) showStatistics( 2000 );
   }
@@ -591,7 +554,7 @@ var game = new Wordle.Game({
 
 
 // Set Wordle Game Disctoinary
-var dictURL = 'palavras.txt';
+var dictURL = 'https://raw.githubusercontent.com/KellerBeMaciel/SoraPumpe/refs/heads/main/termo/palavras.txt';
 game.dictionary = new Wordle.Dictionary({
   file: dictURL,
   separator: "\n",
@@ -617,19 +580,5 @@ Wordle.Utils.onReady(function(){
   
   // Add keyboard DOM
   if ( game.keyboard.DOM ) document.getElementById('keyboard').appendChild( game.keyboard.DOM );
-  
-  // Resume if state found
-  var state = statistics.get( 'day' + day, {state:null} ).state;
-  if ( state ) game.resume( state );
-  
-  // Modals
-  var $modals = document.getElementsByClassName('modal');
-  var closeModal = function(e){
-    if ( e.target.id == 'share' ) return;
-    if ( e.target.id == 'textarea' ) return;
-    e.currentTarget.className = e.currentTarget.className.split('modal-shown').join('');
-  }
-  for( var m = 0; m < $modals.length; m++ )
-    $modals[m].addEventListener('click', closeModal );
-    
+  if ( state ) game.resume( state );    
 });
