@@ -213,7 +213,7 @@ img {
   background-size: 300% auto;
   position: absolute;
   left: calc(50% - 25px);
-  top: 75%;
+  top: 65%;
   pointer-events: none;  
   color: white;
 }
@@ -224,7 +224,7 @@ img {
   height: 100%;
   position: absolute;
   left: 0;
-  top:0;
+  top: 0;
   pointer-event: none;
   background: 
     url('../img/running.gif');
@@ -278,8 +278,8 @@ img {
 #game_wolf {
   width: 60px;
   aspect-ratio: 25 / 60;
-  background-image: url('https://contentservice.mc.reyrey.net/image_v1.0.0/?id=82ce74de-2ee9-538a-8d46-847baabc0bb9&637841816771503502');
-  background-size: 500% auto;
+  background-image: url('../img/ahtnamas_correndo.gif');
+  background-size: 100% auto;
   background-repeat: repeat-x;
   position: absolute;
   left: calc(50% - 30px);
@@ -291,7 +291,7 @@ img {
 }
 @keyframes wolf {
   100% {
-    background-position: 500% 0;
+    background-position: 100% 0;
   }
 }
 
@@ -320,12 +320,13 @@ img {
 
 .dead_wolf {
   aspect-ratio: 25 / 40 !important;
-  background: url('https://contentservice.mc.reyrey.net/image_v1.0.0/?id=b46202e0-4b67-5b65-9377-fb43d716659e&637842445627538882') !important;
+  background: url('../img/ahtnamas_mimida.gif') !important;
   background-repeat: no-repeat !important;
   background-position: 50% 50%;
   top: 70% !important;
   transform: translateY(-30%) rotate(-90deg) !important;
   filter: drop-shadow(-5px 0px 1px rgba(0,0,0,.25));
+  animation: wolf .6s steps(5) infinite;
 }
 
 /* trees trees trees */
