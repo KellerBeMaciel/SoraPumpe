@@ -1,0 +1,281 @@
+/* Corpo da página: fundo escuro, texto branco */
+body {
+  font-family: 'Courier New', Courier, monospace;
+  background-color: #4B365A;
+  color: #C8BBC8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+
+/* Container de cada tela (máx 500px) */
+.container {
+  text-align: center;
+  width: 100%;
+  max-width: 500px;
+}
+
+/* Botões padrão */
+button {
+  background-color: #33233F;
+  color: #C8BBC8;
+  border: none;
+  border-radius: 25px;
+  padding: 12px 25px;
+  font-size: 16px;
+  font-weight: normal;
+  cursor: pointer;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Adiciona uma sombra suave */
+  transition: transform 0.2s ease, background-color 0.3s ease;
+}
+button:hover {
+  background-color: #5E4073;
+}
+
+/* Links (se necessário) */
+a {
+  color: #C8BBC8;
+  text-decoration: none;
+  font-size: 14px;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+  /* Títulos e textos */
+  h1 {
+    font-size: 32px; /* Aumenta o tamanho do título */
+    font-weight: 700; /* Torna o título mais 'pesado' */
+    color: #C8BBC8; /* Muda para uma cor mais vibrante, como dourado */
+    text-align: center; /* Centraliza o título */
+    text-transform: uppercase; /* Coloca o texto em maiúsculas */
+    letter-spacing: 2px; /* Adiciona espaço entre letras */
+    margin-bottom: 20px;
+    border-bottom: 2px none #F0F0FF; /* Adiciona uma linha decorativa abaixo do título */
+  }
+  
+  p {
+    font-size: 18px; /* Aumenta o tamanho da fonte */
+    line-height: 1.8; /* Melhora o espaçamento entre linhas */
+    margin-bottom: 20px; /* Adiciona espaço entre os parágrafos */
+    color: #C8BBC8; /* Uma cor cinza claro para contraste suave */
+    text-align: center; /* Centraliza o texto */
+  }
+  
+  .instructions p {
+    text-align: center;
+  }
+
+/* Barra superior do jogo (modo, tentativas/score, timer) */
+.info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  padding: 0 20px;
+}
+#game-mode {
+  font-size: 18px;
+  font-weight: bold;
+}
+#attempts {
+  font-size: 18px;
+  font-weight: bold;
+}
+#timer {
+  font-size: 18px;
+  font-weight: bold;
+  min-width: 70px;
+  text-align: right;
+}
+
+/* Mensagem de erro/acerto */
+.message {
+  margin: 15px 0;
+  padding: 10px;
+  border-radius: 5px;
+  display: none;
+}
+.message.success {
+  background-color: #4CAF50;
+}
+.message.error {
+  background-color: #F44336;
+}
+
+/* Grade de palavras (4x4) */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-top: 20px;
+  justify-content: center;
+  align-items: center;
+}
+.cell {
+  background-color: #33233F;
+  border: none;
+  color: white;
+  padding: 15px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  height: 100px;
+  width: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+.cell.selected {
+  background-color: #82718E;
+}
+.cell.shake {
+  animation: shake 0.3s;
+  border: 2px solid #9A7598;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+}
+
+/* Botão grande (1x4) ao acertar categoria */
+.big-cell {
+  grid-column: span 4;
+  background-color: #3F3D88;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  padding: 20px;
+  text-align: center;
+  border-radius: 10px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.big-cell strong {
+  margin-bottom: 8px;
+  font-weight: 600;
+  font-size: 26px;
+  text-align: center;
+}
+.big-cell span {
+  font-size: 20px;
+  font-weight: normal;
+  line-height: 1.4;
+  margin-top: 0;
+  text-align: center;
+}
+
+/* Seção de conclusão (final do tutorial/single/competitivo) */
+#completion-section {
+  background-color: #432C53;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  margin-top: -30px;
+  position: relative;
+  z-index: 10;
+}
+
+.continue{
+  margin: auto;
+  width: 90%;
+}
+
+.custom-btn {
+  width: 100%;
+  height: 40px;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px 25px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
+  outline: none;
+}
+
+.botao {
+  background-color: #A36EA3;
+  line-height: 42px;
+  padding: 0;
+  border: none;
+}
+.botao span {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.botao:before,
+.botao:after {
+  position: absolute;
+  content: "";
+  right: 0;
+  bottom: 0;
+  background: #c797eb;
+  transition: all 0.3s ease;
+}
+.botao:before{
+   height: 0%;
+   width: 2px;
+}
+.botao:after {
+  width: 0%;
+  height: 2px;
+}
+.botao:hover:before {
+  height: 100%;
+}
+.botao:hover:after {
+  width: 100%;
+}
+.botao:hover{
+  background: transparent;
+}
+.botao span:hover{
+  color: #c797eb;
+}
+.botao span:before,
+.botao span:after {
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 0;
+  background: #c797eb;
+  /*box-shadow:  4px 4px 6px 0 rgba(255,255,255,.5),
+              -4px -4px 6px 0 rgba(116, 125, 136, .2), 
+    inset -4px -4px 6px 0 rgba(255,255,255,.5),
+    inset 4px 4px 6px 0 rgba(116, 125, 136, .3);*/
+  transition: all 0.3s ease;
+}
+.botao span:before {
+  width: 2px;
+  height: 0%;
+}
+.botao span:after {
+  height: 2px;
+  width: 0%;
+}
+.botao span:hover:before {
+  height: 100%;
+}
+.botao span:hover:after {
+  width: 100%;
+}
