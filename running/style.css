@@ -26,7 +26,6 @@ img {
   display: grid;
 }
 #console {
-  margin-top: 15vh;
   width: 100%;
   height: 400px;
   position: relative;
@@ -140,18 +139,18 @@ img {
 #start_btn:before {
   content: '';
   width: 100%;
-  max-width: 100px;
-  height: 100px;
+  max-width: 150px;
+  height: 150px;
   background-image: url('../img/before.gif');
-  background-size: 50% 50%;
+  background-size: 80% 80%;
   background-repeat: no-repeat;
   background-position: 50% 50%;
   box-sizing: border-box;
   border-radius: 50%;
   position: absolute;
-  left: calc(50% - 50px);
+  left: calc(50% - 75px);
   margin: 0 auto;
-  transform: translateY(-75%);
+  transform: translateY(-60%);
   background-color: inherit;
 }
 
